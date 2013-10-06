@@ -13,3 +13,5 @@ You can move several subtasks simultaneously.
 
 If the new parent task has a fix version it will override the subtask fix version. 
 Otherwise the subtask version will be unaffected.
+
+https://chrome.google.com/webstore/detail/jira-dragdrop/ancggppogalfgdikhamgcgppkohigefk
