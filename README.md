@@ -11,7 +11,6 @@ Once the subtask has moved, the background tab will be closed automatically.
 
 You can move several subtasks simultaneously.
 
-If the new parent task has a fix version it will override the subtask fix version. 
-Otherwise the subtask version will be unaffected.
+Subtask fix version will be set from the new parent task's fix version.
 
 https://chrome.google.com/webstore/detail/jira-dragdrop/ancggppogalfgdikhamgcgppkohigefk
