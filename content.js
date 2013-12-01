@@ -92,8 +92,32 @@
         version: version
       });
       $('#ghx-tab-subtasks tr[data-issue-id=' + fromId + ']').hide();
+      recalculateEstimate();
     });
   } 
+
+  function recalculateEstimate() {
+    var estimates = $('#ghx-tab-subtasks .ghx-estimate:visible').toArray().map(function(e) {
+      return e.innerText;
+    });
+
+    var estimatesInMinutes = estimates.map(function(e) {
+      var value = parseInt(e.substring(0, e.length - 1), 10);
+      if (e[e.length - 1] === 'h') {
+        return value * 60;
+      } else {
+        return value;
+      }
+    });
+
+    var sum = estimatesInMinutes.reduce(function(a, b) { return a + b; });
+
+    var hours = Math.floor(sum / 60),
+        minutes = sum - hours * 60;
+
+    var newEstimate = hours + "h " + ((minutes > 0) ? (minutes + "m") : "");
+    $('#ghx-tab-subtasks .ghx-estimate-sum').text('Σ ' + newEstimate);
+  }
 
   function init() {
     log("start binding");
