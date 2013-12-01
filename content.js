@@ -74,18 +74,16 @@
     // get parent fix version
     $.get('/rest/api/2/issue/' + to + '?fields=fixVersions', function(data) {
       var version = data.fields.fixVersions;
-      if (version.length > 0) {
-        $.ajax({
-          url: '/rest/api/2/issue/' + fromKey,
-          type: 'PUT',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            "fields": {
-              "fixVersions": version
-            }
-          })
-        });
-      }
+      $.ajax({
+        url: '/rest/api/2/issue/' + fromKey,
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          "fields": {
+            "fixVersions": version
+          }
+        })
+      });
       chrome.runtime.sendMessage({
         from: fromId,
         to: to,
